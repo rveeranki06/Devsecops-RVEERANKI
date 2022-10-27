@@ -8,10 +8,25 @@ pipeline {
               archive 'target/*.jar'
             }
         }
-    stage('Docker Version') {
+    stages {
+        stage('git version') {
             steps {
-              sh "docker -version"
+                sh 'git version'
             }
-        }  
-    }
-}
+        }
+        stage('maven version') {
+            steps {
+                sh 'mvn -version'
+            }
+        }
+        stage('docker version') {
+            steps {
+                sh 'docker --version'
+            }
+        }
+        stage('kubectl version') {
+            steps {
+                withKubeConfig([credentialsId: 'kubeconfig1']) {
+                sh 'kubectl version'
+            }
+        }
