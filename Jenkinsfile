@@ -29,6 +29,6 @@ pipeline {
                 sh 'kubectl version'
             }
         }
-          
-     }
+      }   
+    }
   }
