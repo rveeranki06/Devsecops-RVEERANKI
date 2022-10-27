@@ -8,8 +8,7 @@ pipeline {
               archive 'target/*.jar'
             }
         }
-    stages {
-        stage('git version') {
+            stage('git version') {
             steps {
                 sh 'git version'
             }
@@ -30,3 +29,6 @@ pipeline {
                 sh 'kubectl version'
             }
         }
+          
+     }
+  }
